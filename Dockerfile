@@ -1,7 +1,7 @@
 FROM node:alpine as node
 FROM golang:latest
 
-RUN mkdir /opt
+RUN mkdir -p /opt
 COPY --from=node /opt/yarn /opt/yarn
 COPY --from=node /usr/local/bin/node /usr/local/bin/
 RUN ln -s /opt/yarn/bin/yarn /usr/local/bin/yarn \
