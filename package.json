@@ -1,0 +1,20 @@
+{
+  "name": "ojichat-discord-bot",
+  "version": "0.1.0",
+  "main": "src/index.ts",
+  "author": "LaFr4nc3",
+  "license": "MIT",
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "dev:watch": "ts-node-dev --respawn src/index.ts"
+  },
+  "dependencies": {
+    "discord.js": "discordjs/discord.js",
+    "typescript": "^3.5.3"
+  },
+  "devDependencies": {
+    "@types/node": "^12.7.2",
+    "ts-node": "^8.3.0",
+    "ts-node-dev": "^1.0.0-pre.41"
+  }
+}
