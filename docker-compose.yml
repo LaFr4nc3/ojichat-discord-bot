@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  ojichat4discord:
+    build: ./ojichat-discord-bot
+    environment:
+      - DISCORD_TOKEN=[TOKEN]
+    restart: unless-stopped
