@@ -1,16 +1,14 @@
-FROM node:alpine as node
-FROM golang:latest
+FROM golang:latest as golang
 
-RUN mkdir -p /opt
-COPY --from=node /opt/yarn /opt/yarn
-COPY --from=node /usr/local/bin/node /usr/local/bin/
-RUN ln -s /opt/yarn/bin/yarn /usr/local/bin/yarn \
- && ln -s /opt/yarn/bin/yarn /usr/local/bin/yarnpkg
+RUN go get -u github.com/greymd/ojichat
 
+FROM node:alpine
+
+COPY --from=golang /go/bin/ojichat /usr/local/bin/ojichat
 ADD . /ojichat-discord-bot
-
 WORKDIR /ojichat-discord-bot
 RUN yarn install
-RUN go get -u github.com/greymd/ojichat
+RUN mkdir /lib64 \
+ && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2
 
 CMD ["yarn", "run", "dev"]
